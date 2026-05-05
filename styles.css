@@ -285,6 +285,56 @@ h3 { margin-bottom: 8px; font-size: 20px; line-height: 1.3; }
   background: linear-gradient(90deg, var(--teal), var(--gold));
 }
 
+.audience-section {
+  padding-top: 40px;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.audience-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 14px 36px rgba(20, 58, 90, 0.1);
+}
+
+.audience-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter: saturate(0.94);
+}
+
+.audience-card div {
+  padding: 20px;
+}
+
+.audience-card span {
+  display: inline-flex;
+  border-radius: 8px;
+  padding: 5px 9px;
+  color: var(--teal);
+  background: #e6f3f3;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.audience-card h3 {
+  margin-top: 14px;
+  color: var(--navy);
+}
+
+.audience-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
 .icon {
   display: inline-flex;
   align-items: center;
@@ -628,7 +678,7 @@ details p { margin: 12px 0 0; color: var(--muted); }
   .feature-grid.three, .feature-grid.two, .split, .campaign-preview, .campaign-detail, .calculator-section, .contact-layout, .timeline, .assessment-grid, .insight-grid { grid-template-columns: 1fr; }
   .page-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .offer-grid { grid-template-columns: 1fr; }
-  .home-quickbar, .loan-route-grid, .home-steps, .faq-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-quickbar, .loan-route-grid, .home-steps, .faq-preview-grid, .audience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .final-cta { align-items: flex-start; flex-direction: column; }
 }
 
@@ -660,7 +710,7 @@ details p { margin: 12px 0 0; color: var(--muted); }
     margin-top: -28px;
   }
   .home-quickbar div { min-height: auto; padding: 14px 16px; }
-  .loan-route-grid, .home-steps, .faq-preview-grid { grid-template-columns: 1fr; }
+  .loan-route-grid, .home-steps, .faq-preview-grid, .audience-grid { grid-template-columns: 1fr; }
   .route-card { min-height: 180px; }
   .calculator, .lead-form { grid-template-columns: 1fr; }
   .site-footer { flex-direction: column; }
