@@ -1,25 +1,20 @@
-const pages = [...document.querySelectorAll("[data-page]")];
-const navLinks = [...document.querySelectorAll("[data-page-link]")];
-
-function showPage(pageName) {
-  pages.forEach((page) => {
-    page.classList.toggle("active", page.dataset.page === pageName);
-  });
-
-  navLinks.forEach((link) => {
-    link.classList.toggle("active", link.dataset.pageLink === pageName && link.classList.contains("nav-link"));
-  });
-
-  if (location.hash.replace("#", "") !== pageName) {
-    history.replaceState(null, "", `#${pageName}`);
-  }
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+const currentPage = document.body.dataset.page;
+const navLinks = document.querySelectorAll("[data-nav]");
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector(".main-nav");
 
 navLinks.forEach((link) => {
-  link.addEventListener("click", () => showPage(link.dataset.pageLink));
+  if (link.dataset.nav === currentPage) {
+    link.classList.add("active");
+  }
 });
+
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}
 
 const amountInput = document.querySelector("#amount");
 const monthsInput = document.querySelector("#months");
@@ -29,14 +24,15 @@ const monthlyPayment = document.querySelector("#monthlyPayment");
 const pressureText = document.querySelector("#pressureText");
 
 function formatCurrency(value) {
-  return new Intl.NumberFormat("zh-TW", {
-    style: "currency",
-    currency: "TWD",
+  const amount = new Intl.NumberFormat("zh-TW", {
     maximumFractionDigits: 0
   }).format(value);
+  return `NT$ ${amount}`;
 }
 
 function calculateLoan() {
+  if (!amountInput || !monthsInput || !rateInput || !incomeInput || !monthlyPayment || !pressureText) return;
+
   const amount = Number(amountInput.value || 0);
   const months = Number(monthsInput.value || 1);
   const annualRate = Number(rateInput.value || 0);
@@ -63,9 +59,7 @@ function calculateLoan() {
 }
 
 [amountInput, monthsInput, rateInput, incomeInput].forEach((input) => {
-  input.addEventListener("input", calculateLoan);
+  if (input) input.addEventListener("input", calculateLoan);
 });
 
-const initialPage = location.hash.replace("#", "") || "home";
-showPage(pages.some((page) => page.dataset.page === initialPage) ? initialPage : "home");
 calculateLoan();

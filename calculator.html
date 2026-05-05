@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>貸款試算｜幸貸專家</title>
+  <meta name="description" content="輸入需求金額、期數、利率與收入，預估月付金與還款壓力。">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-page="calculator">
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="幸貸專家首頁"><img class="brand-logo" src="./logo.jpg" alt="幸貸專家 Trusted Loan"><span><strong>幸貸專家</strong><small>貸款評估平台</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav">選單</button>
+    <nav class="main-nav" id="mainNav" aria-label="主要導覽">
+      <a class="nav-link" data-nav="home" href="./index.html">首頁</a><a class="nav-link" data-nav="plans" href="./plans.html">貸款方案</a><a class="nav-link" data-nav="calculator" href="./calculator.html">貸款試算</a><a class="nav-link" data-nav="process" href="./process.html">申請流程</a><a class="nav-link" data-nav="faq" href="./faq.html">常見問題</a><a class="nav-link" data-nav="about" href="./about.html">關於我們</a><a class="nav-link nav-cta" data-nav="contact" href="./contact.html">免費評估</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero compact"><p class="eyebrow">貸款試算</p><h1>先看月付，再決定是否適合申請</h1><p>試算器協助使用者把抽象的金額轉成每月負擔，作為諮詢前的初步參考。</p></section>
+    <section class="section calculator-section">
+      <form class="calculator" id="loanCalculator">
+        <label><span>需求金額</span><input type="number" id="amount" min="10000" max="1000000" step="1000" value="120000"></label>
+        <label><span>還款期數（月）</span><input type="number" id="months" min="6" max="84" step="1" value="36"></label>
+        <label><span>預估年利率（%）</span><input type="number" id="rate" min="1" max="16" step="0.1" value="7.2"></label>
+        <label><span>每月收入</span><input type="number" id="income" min="0" step="1000" value="42000"></label>
+      </form>
+      <aside class="result-panel" aria-live="polite">
+        <span>預估月付金</span>
+        <strong id="monthlyPayment">NT$ 0</strong>
+        <p id="pressureText">請輸入資料進行試算。</p>
+        <a class="primary-btn" href="./contact.html">帶著試算結果諮詢</a>
+      </aside>
+    </section>
+    <section class="section note-section"><p>試算結果僅供參考，實際貸款條件、利率、費用、核准金額與總費用年百分率，仍依個人條件與合作機構審核結果為準。</p></section>
+  </main>
+  <footer class="site-footer"><div><strong>幸貸專家</strong><p>展示草稿版本，正式文案與合法揭露內容需依實際服務模式確認。</p></div><div class="footer-links"><span>隱私權政策</span><span>服務條款</span><span>費用與風險揭露</span></div></footer>
+  <script src="./app.js"></script>
+</body>
+</html>
